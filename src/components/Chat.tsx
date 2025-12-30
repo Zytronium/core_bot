@@ -35,7 +35,7 @@ export default function Chat({
 function UserChatBubble({ message }: { message: string }) {
   return (
     <div className="flex self-end">
-      <p className="bg-blue-500 rounded-t-full rounded-l-full px-3 py-2">{message}</p>
+      <p className="bg-blue-500 rounded-t-2xl rounded-l-2xl px-3 py-2">{message}</p>
     </div>
   );
 }
@@ -64,10 +64,10 @@ function BotChatBubble({ message, isLatest }: { message: string; isLatest: boole
 
   return (
     <div className="flex">
-      <p className={`rounded-t-full rounded-r-full px-3 py-2 ${
+      <p className={`px-3 py-2 ${
         message === "RICKROLL"
-          ? "bg-[url('/roll.gif')] bg-cover bg-center w-48 h-48"
-          : "bg-gray-700"
+          ? "bg-[url('/roll.gif')] bg-cover bg-center w-48 h-48 rounded-t-[4rem] rounded-r-[4rem]"
+          : "bg-gray-700 rounded-t-2xl rounded-r-2xl"
       }`}>
         {message !== "RICKROLL" && displayedText}
       </p>
