@@ -1,7 +1,6 @@
 "use client";
 
 import { Chat, Intro } from "@/components/index";
-import { useState } from "react";
 import { message } from '@/types'
 
 interface ChatShellProps {
@@ -15,7 +14,10 @@ export default function ChatShell({messages, setMessages, messageCount, setMessa
   return (
     <main className="flex flex-col items-center h-full w-screen">
       {messageCount === 0
-        ? (<Intro />)
+        ? (<Intro
+          messages={messages} setMessages={setMessages}
+          messageCount={messageCount} setMessageCount={setMessageCount}
+        />)
         : (<Chat messages={messages} setMessages={setMessages} messageCount={messageCount} setMessageCount={setMessageCount} />)
       }
     </main>

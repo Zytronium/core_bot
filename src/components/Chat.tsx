@@ -5,7 +5,6 @@ interface ChatProps {
   setMessages: (messages: message[]) => void;
   messageCount?: number;
   setMessageCount?: (count: number) => void;
-
 }
 
 export default function Chat({
