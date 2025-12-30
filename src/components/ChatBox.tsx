@@ -24,14 +24,21 @@ export default function ChatBox({sendMessage}: { sendMessage: (message: string) 
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit(e);
+            }
+          }}
           placeholder="Type a message..."
           className="flex-1 bg-zinc-900 text-white rounded-lg p-3 resize-none outline-none focus:ring-2 focus:ring-blue-500 min-h-[50px] max-h-[200px]"
           rows={1}
           autoFocus
         />
         <button
+          
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-3 transition-colors"
+          className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-3 transition-colors cursor-pointer"
           disabled={!input.trim()}
         >
           <Send size={20} />
