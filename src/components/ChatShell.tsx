@@ -16,7 +16,7 @@ export default function ChatShell({messages, setMessages, messageCount, setMessa
     <main className="flex flex-col items-center h-full w-screen">
       {messageCount === 0
         ? (<Intro />)
-        : (<Chat messageCount={messageCount} setMessageCount={setMessageCount} />)
+        : (<Chat messages={messages} setMessages={setMessages} messageCount={messageCount} setMessageCount={setMessageCount} />)
       }
     </main>
   );

@@ -5,7 +5,7 @@ import { message } from "@/types";
 
 export default function ChatWrapper() {
   let [messageCount, setMessageCount] = useState(0);
-  let [messages, setMessages] = useState<message[]>([]);
+  let [messages, setMessages] = useState<message[]>([{ message: 'Hello, I am CoRE Bot!', sender: 'bot', timestamp: new Date()}]);
   return (
     <>
       <ChatShell messages={messages} setMessages={setMessages}
