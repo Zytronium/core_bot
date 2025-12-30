@@ -1,10 +1,10 @@
-import { Header, ChatShell } from '@/components';
+import { Header, ChatWrapper } from '@/components';
 
 export default function Home() {
   return (
     <>
       <Header />
-      <ChatShell/>
+      <ChatWrapper/>
     </>
   );
 }
