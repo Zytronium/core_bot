@@ -39,7 +39,13 @@ function UserChatBubble(props: { message: string }) {
 function BotChatBubble(props: { message: string }) {
   return (
     <div className="flex">
-      <p className="bg-gray-700 rounded-t-full rounded-r-full px-3 py-2">{props.message}</p>
+      <p className={`rounded-t-full rounded-r-full px-3 py-2 ${
+        props.message === "RICKROLL"
+          ? "bg-[url('/roll.gif')] bg-cover bg-center w-48 h-48"
+          : "bg-gray-700"
+      }`}>
+        {props.message !== "RICKROLL" && props.message}
+      </p>
     </div>
   )
 }
