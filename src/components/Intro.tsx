@@ -12,7 +12,7 @@ export default function Intro({ sendMessage }: Readonly<{
       <div className="flex flex-col gap-5 items-center justify-center mt-4 w-[80%]">
         <ExamplePreset sendMessage={sendMessage}>What are your capabilities?</ExamplePreset>
         <ExamplePreset sendMessage={sendMessage}>How did you get your name?</ExamplePreset>
-        <ExamplePreset sendMessage={sendMessage}>Explain rocket science like I&apos;m 5</ExamplePreset>
+        <ExamplePreset sendMessage={sendMessage}>Explain rocket science like I&apos;m 5.</ExamplePreset>
       </div>
     </div>
   );
