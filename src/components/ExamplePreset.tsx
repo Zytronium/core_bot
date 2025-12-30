@@ -14,7 +14,7 @@ export default function ExamplePreset({
   };
 
   return (
-    <div className="w-128 min-h-2/4 border-2 border-gray-500 rounded-2xl p-6 text-lg cursor-pointer" onClick={handleClick}>
+    <div className="w-80 md:w-128 min-h-2/4 border-2 border-gray-500 rounded-2xl p-4 md:p-6 text-base md:text-lg cursor-pointer" onClick={handleClick}>
       {children}
     </div>
   );

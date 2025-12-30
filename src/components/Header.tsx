@@ -11,7 +11,7 @@ export default function Header() {
           A human-like AI bot like never before seen
         </p>
       </div>
-      <div className="w-10 h-10"></div>
+      <div className="md:w-10 md:h-10"></div>
     </header>
   );
 }
