@@ -18,7 +18,7 @@ export default function ChatBox({sendMessage}: { sendMessage: (message: string) 
   return (
     <form
       onSubmit={handleSubmit}
-      className="fixed bottom-0 left-0 right-0 border-t border-gray-700 p-4"
+      className="fixed bottom-0 left-0 right-0 bg-zinc-800 border-t border-gray-700 p-4"
     >
       <div className="max-w-4xl mx-auto flex gap-4 items-end">
         <textarea

@@ -11,7 +11,7 @@ interface ChatShellProps {
 
 export default function ChatShell({messages, messageCount, sendMessage}: ChatShellProps) {
   return (
-    <main className="flex flex-col items-center h-full w-screen">
+    <main className="flex flex-col items-center h-full w-screen pb-24">
       {messageCount === 0
         ? (<Intro sendMessage={sendMessage}/>)
         : (<Chat messages={messages}/>)
