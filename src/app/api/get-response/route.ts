@@ -13,6 +13,21 @@ export async function GET(
     )
   }
 
+  // Check for repeat patterns
+  const repeatPatterns = [
+    /^say\s+(.+)$/i,
+    /^repeat\s+after\s+me[:\s]+(.+)$/i,
+    /^repeat\s+(.+)$/i,
+    /^can you say\s+(.+)$/i,
+  ]
+
+  for (const pattern of repeatPatterns) {
+    const match = msg.match(pattern)
+    if (match && match[1]) {
+      return NextResponse.json({ response: match[1].trim() })
+    }
+  }
+
   const responsesByMessage: Record<string, string> = {
     'What are your capabilities': 'I am a human-like AI bot that can understand and respond to any question. I have human-like responses thanks to my very human programming.',
     'What can you do': 'I am a human-like AI bot that can understand and respond to any question. I have human-like responses thanks to my very human programming. I am also capable of rickrolling you. Whoops! I wasn\'t supposed to tell you that part.',
