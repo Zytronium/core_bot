@@ -11,13 +11,36 @@ export default function ChatWrapper() {
     // { message: 'RICKROLL', sender: 'bot', timestamp: new Date()}
   ]);
 
-  function sendMessage(message: string) {
+  async function sendMessage(message: string) {
     setMessages(
       [...messages, {message: message.trim(), sender: 'user', timestamp: new Date()}]
     );
     setMessageCount(messageCount + 1);
-    // todo: send API request to generate a response
+
+    try {
+      const response = await fetch(`/api/get-response?msg=${encodeURIComponent(message.trim())}`);
+      if (!response.ok) {
+        throw new Error('Failed to get response.');
+      }
+      const data = await response.json();
+
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { message: data.response, sender: 'bot', timestamp: new Date() }
+      ]);
+    } catch (error) {
+      console.error('Error fetching response:', error);
+      setMessages(prevMessages => [
+        ...prevMessages,
+        {
+          message: 'Sorry, I encountered an error. Please try again.',
+          sender: 'bot',
+          timestamp: new Date()
+        }
+      ]);
+    }
   }
+
   return (
     <>
       <ChatShell messages={messages} sendMessage={sendMessage} messageCount={messageCount}/>
