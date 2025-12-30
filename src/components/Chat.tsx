@@ -2,20 +2,13 @@ import { message } from "@/types";
 
 interface ChatProps {
   messages: message[];
-  setMessages: (messages: message[]) => void;
-  messageCount?: number;
-  setMessageCount?: (count: number) => void;
 }
 
 export default function Chat({
-  messages,
-  setMessages,
-  messageCount,
-  setMessageCount
+  messages
 }: ChatProps) {
   return (
     <>
-      <div>You have sent {messageCount} messages.</div>
       <div className="flex flex-col gap-6 mt-4 w-full max-w-4xl px-4">
         {messages.map((message, index) => (
           message.sender === 'bot'

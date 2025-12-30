@@ -2,30 +2,16 @@
 
 import { Send } from 'lucide-react';
 import { FormEvent, useState } from 'react';
-import { message } from '@/types'
 
-interface ChatBoxProps {
-  messages: message[];
-  setMessages: (messages: message[]) => void;
-  messageCount: number;
-  setMessageCount: (count: number) => void;
-}
-
-export default function ChatBox({messages, setMessages, messageCount, setMessageCount}: ChatBoxProps) {
+export default function ChatBox({sendMessage}: { sendMessage: (message: string) => void }) {
   const [input, setInput] = useState('');
-
-  function handleSend(input: string) {
-    setMessages([...messages, {message: input.trim(), sender: 'user', timestamp: new Date()}]);
-    setMessageCount(messageCount + 1);
-    // todo: send API request to generate a response
-  }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim())
       return;
 
-    handleSend(input);
+    sendMessage(input);
     setInput('');
   };
 

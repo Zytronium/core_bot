@@ -1,24 +1,16 @@
 'use client';
 import React from 'react';
-import { message } from '@/types';
 
 export default function ExamplePreset({
   children,
-  messages,
-  setMessages,
-  messageCount,
-  setMessageCount,
+  sendMessage
 }: Readonly<{
   children: React.ReactNode;
-  messages: message[];
-  setMessages: (messages: message[]) => void;
-  messageCount: number;
-  setMessageCount: (count: number) => void;
+  sendMessage: (message: string) => void;
 }>) {
   const handleClick = () => {
     const text = typeof children === 'string' ? children : React.Children.toArray(children).filter(child => typeof child === 'string').join('');
-    setMessages([...messages, { message: text, sender: 'user', timestamp: new Date() }]);
-    setMessageCount(messageCount + 1);
+    sendMessage(text)
   };
 
   return (
