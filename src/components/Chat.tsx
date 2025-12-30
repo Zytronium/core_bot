@@ -1,4 +1,7 @@
+'use client';
+
 import { message } from "@/types";
+import { useEffect, useRef } from "react";
 
 interface ChatProps {
   messages: message[];
@@ -7,6 +10,12 @@ interface ChatProps {
 export default function Chat({
   messages
 }: ChatProps) {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   return (
     <>
       <div className="flex flex-col gap-6 mt-4 w-full max-w-4xl px-4">
@@ -15,6 +24,7 @@ export default function Chat({
             ? <BotChatBubble key={index} message={message.message} />
             : <UserChatBubble key={index} message={message.message} />
         ))}
+        <div ref={messagesEndRef} />
       </div>
     </>
   )
