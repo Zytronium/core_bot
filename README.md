@@ -13,7 +13,12 @@ CoRE Bot is also capable of repeating back to the users upon request. For exampl
 CoRE Bot is also sensitive to anti-bot slurs. For example:
 ![Chat Screenshot of bot not tolerating the term "clanker"](readme-assets/chat_screenshot_2.png)
 
-
 CoRE Bot also has basic profanity filters built in. This prevents the user from
 asking CoRE Bot to say profane words. For example:
 ![Chat Screenshot of bot refusing requests with profanity](readme-assets/chat_screenshot_3.png)
+
+---
+
+Like what you see? Consider supporting me!
+
+<a href="https://www.buymeacoffee.com/zytronium" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a>
