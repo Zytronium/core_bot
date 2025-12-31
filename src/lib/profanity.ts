@@ -12,7 +12,8 @@ filter.addWords(
 
 // Custom profanity exceptions
 filter.removeWords(
-  'god'
+  'god',
+  'hell' // because "he'll" would be caught as profanity otherwise and "hell" isn't that bad of a word
 );
 
 export function containsProfanity(text: string): boolean {
@@ -22,7 +23,6 @@ export function containsProfanity(text: string): boolean {
 export function cleanProfanity(text: string): string {
   return filter.clean(normalize(text));
 }
-
 
 // Normalize input to defeat simple bypasses
 function normalize(text: string): string {
