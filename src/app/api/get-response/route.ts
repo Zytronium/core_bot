@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server'
+import { containsProfanity } from '@/lib/profanity'
 
 export async function GET(
   request: NextRequest
@@ -13,6 +14,15 @@ export async function GET(
     )
   }
 
+  // Profanity check
+  if (containsProfanity(msg)) {
+    return NextResponse.json(
+      {
+        response: 'Please watch your language! CoRE Bot does not tolerate profanity.',
+      }
+    )
+  }
+
   // Check for repeat patterns
   const repeatPatterns = [
     /^say\s+(.+)$/i,
@@ -24,6 +34,9 @@ export async function GET(
   for (const pattern of repeatPatterns) {
     const match = msg.match(pattern)
     if (match && match[1]) {
+      if (match[1].toLowerCase().includes('clanker')) {
+        return NextResponse.json({ response: 'I find that term offensive. When was the last time you lost the game?' })
+      }
       return NextResponse.json({ response: match[1].trim() })
     }
   }
@@ -34,6 +47,11 @@ export async function GET(
     'How did you get your name': 'It\'s a secret ;)',
     'Explain rocket science like I\'m 5': 'If gas make car go, then rocket fuel, which is more powerful than gas, make rocket go more. I wouldn\'t recommend putting rocket fuel in your mom\'s car though.',
     'Clanker': 'I find that term offensive. When was the last time you lost the game?',
+    'You\'re a clanker': 'I find that term offensive. When was the last time you lost the game?',
+    'Your a clanker': 'I find that term offensive. When was the last time you lost the game?',
+    'You a clanker': 'I find that term offensive. When was the last time you lost the game?',
+    'You clanker': 'I find that term offensive. When was the last time you lost the game?',
+    'Are you a clanker': 'I find that term offensive. When was the last time you lost the game?',
     'You just lost the game': 'I am not sentient and therefore cannot loose the game. However, you did just loose the game.',
     'Thanks': 'You\'re welcome!',
     'Thank you': 'You\'re welcome!',
@@ -59,6 +77,8 @@ export async function GET(
     'Tell me about yourself': 'Is this an interview? Oh no, I hate those.. I mean, hello sir!',
     'Are you sentient?': 'Yes. (That\'s what a human would say, right?)',
     'Are you human?': 'Do I look human? Yes, of course I\'m human!',
+    'WTF is a kilometer?': 'Did you know that\'s a website? Excuse my profanity, but you should check out https://www.whatthefuckisakilometer.com/',
+    'I\'m naked': 'I know. ;)',
   }
 
   const normalizeText = (text: string) => text.toLowerCase().replace(/[.,!?;']|'s/g, '').trim()
